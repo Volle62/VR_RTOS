@@ -5,6 +5,12 @@ VR_RTOS consists of :
 - Application Tasks (may only call HAL functions)
 - HAL functions (are the link between application and hardware)
 - HW Driver (may only be called by HAL)
+- Polling Version : 
+-- No Interrupt inside the system, all registers were polled
+-- Only One Timer is used
+- ISR Version : 
+-- An Interrupt is used for System Timer
+-- An additional timer is used for statistics
 
 High Level Features
 - Real-time cooperative message based multitasking operating system.
