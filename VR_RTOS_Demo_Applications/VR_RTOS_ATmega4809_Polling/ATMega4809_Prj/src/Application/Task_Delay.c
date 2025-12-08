@@ -46,7 +46,7 @@ void do_Task_Delay(uint8_t TaskFrom, Sig_e Sig, para_t Para1, para_t Para2)
 	  case SIG_TIME :
 	      VR_RTOS_SendMsg(PRIO_MID, MyTaskNo, MyTaskNo, SIG_TIME, 0, 0, NEXT_TICK);
 	      HAL_Set_DigOut(DOut_TP1_No);
-          HAL_Wait_ms(1);
+          HAL_Wait_1ms();
           //HAL_Wait_100us();
           HAL_Reset_DigOut(DOut_TP1_No);
 
@@ -55,7 +55,7 @@ void do_Task_Delay(uint8_t TaskFrom, Sig_e Sig, para_t Para1, para_t Para2)
 
 	  case SIG_DELAY :
             HAL_Set_DigOut(DOut_TP1_No);
-            HAL_Wait_100us();
+            HAL_Wait_100us(1);
             HAL_Reset_DigOut(DOut_TP1_No);
             if (Para1 <= 5)
                 VR_RTOS_SendMsg(PRIO_LOW, MyTaskNo, MyTaskNo, SIG_DELAY, Para1 + 1, 0, NO_TICK);

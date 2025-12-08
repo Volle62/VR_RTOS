@@ -68,7 +68,8 @@ void HW_Restart_Timer(void);
 uint16_t HW_Read_SysTimer(void);
 void HW_Wait_1us(void);
 void HW_Wait_10us(void);
-void HW_Wait_100us(void);
+void HW_Wait_50us(void);
+void HW_Wait_100us(uint8_t Factor); // Factor can be 1 .. 10
 void HW_Wait_1ms(void);
 #ifdef __cplusplus
 }
