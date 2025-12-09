@@ -24,7 +24,10 @@ extern uint8_t HAL_Get_SysTickTimer(void);
 
 extern void HAL_Wait_1us(void);
 extern void HAL_Wait_10us(void);
-extern void HAL_Wait_100us(uint8_t Factor);
+extern void HAL_Wait_20us(void);
+extern void HAL_Wait_50us(void);
+extern void HAL_Wait_100us(void);
+extern void HAL_Wait_500us(void);
 extern void HAL_Wait_1ms(void);
 extern void HAL_Wait_ms(uint16_t ms);
 

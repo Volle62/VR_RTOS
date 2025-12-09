@@ -34,9 +34,31 @@ void HAL_Wait_10us()
     HW_Wait_10us();
 }
 
-void HAL_Wait_100us(uint8_t Factor) // Factor can be 1 .. 10
+void HAL_Wait_20us()
 {
-    HW_Wait_100us(Factor);
+    HW_Wait_10us();
+    HW_Wait_10us();
+}
+
+void HAL_Wait_50us()
+{
+    HW_Wait_50us();
+}
+
+void HAL_Wait_100us()
+{
+    HW_Wait_100us();
+}
+
+void HAL_Wait_200us()
+{
+    HW_Wait_100us();
+    HW_Wait_100us();
+}
+
+void HAL_Wait_500us()
+{
+    HW_Wait_500us();
 }
 
 void HAL_Wait_1ms()

@@ -57,27 +57,26 @@ void HW_Wait_10us(void)
     HW_Wait_5us();
 }
 
-// Factor can be 1 .. 10
-void HW_Wait_100us(uint8_t Factor)
+
+void HW_Wait_100us(void)
+{
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+    HW_Wait_10us();
+}
+
+void HW_Wait_500us(void)
 {
     uint16_t Count1 = HW_Read_SysTimer();
     uint16_t Count2;
-    uint16_t Limit;
-    
-    switch (Factor)
-    {
-        case 1 : Limit = HW_SYSTEM_TICK_1MS / 10; break;
-        case 2 : Limit = HW_SYSTEM_TICK_1MS / 5; break;
-        case 3 : Limit = (HW_SYSTEM_TICK_1MS * 3) / 10; break;
-        case 4 : Limit = (HW_SYSTEM_TICK_1MS * 4) / 10; break;
-        case 5 : Limit = HW_SYSTEM_TICK_1MS / 2; break;
-        case 6 : Limit = (HW_SYSTEM_TICK_1MS * 6) / 10; break;
-        case 7 : Limit = (HW_SYSTEM_TICK_1MS * 7) / 10; break;
-        case 8 : Limit = (HW_SYSTEM_TICK_1MS * 8) / 10; break;
-        case 9 : Limit = (HW_SYSTEM_TICK_1MS * 9) / 10; break;
-        case 10 : Limit = HW_SYSTEM_TICK_1MS; break;
-        default : Limit = HW_SYSTEM_TICK_1MS; break;
-    }
+    uint16_t Limit = HW_SYSTEM_TICK_1MS / 2;
 
     while (1)
     {
@@ -89,5 +88,15 @@ void HW_Wait_100us(uint8_t Factor)
 
 void HW_Wait_1ms(void)
 {
-   HW_Wait_100us(10);
+    uint16_t Count1 = HW_Read_SysTimer();
+    uint16_t Count2;
+    uint16_t Limit = HW_SYSTEM_TICK_1MS;
+
+    while (1)
+    {
+        Count2 = HW_Read_SysTimer();
+        if ((Count2 - Count1) > Limit)
+        break;
+    }
 }
+
